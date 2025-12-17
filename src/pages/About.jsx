@@ -92,7 +92,7 @@ export default function About() {
         <div className="about-founder">
           <div className="founder-badge">
   <img
-    src="../src/assets/founder.jpg"
+    src="../assets/founder.jpg"
     alt="Ashandie Powell – Founder of A’Dash Technology"
   />
   <span>Founder</span>
@@ -124,5 +124,6 @@ export default function About() {
     </main>
   );
 }
+
 
 
