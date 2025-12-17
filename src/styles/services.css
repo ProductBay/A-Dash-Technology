@@ -1,0 +1,119 @@
+.services {
+  position: relative;
+  padding: 160px 24px;
+  background:
+    radial-gradient(800px 360px at 20% -120px, rgba(140,170,255,0.18), transparent 60%),
+    radial-gradient(700px 320px at 80% 10%, rgba(120,200,255,0.12), transparent 60%),
+    linear-gradient(to bottom, #070b12, #05070c);
+}
+
+.services-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header */
+.services-header {
+  max-width: 720px;
+  margin-bottom: 80px;
+}
+
+.services-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  color: #8fa6ff;
+  margin-bottom: 16px;
+}
+
+.services-title {
+  font-size: clamp(42px, 5vw, 60px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #ffffff;
+  margin-bottom: 22px;
+}
+
+.services-title span {
+  background: linear-gradient(90deg, #9ddcff, #7a9bff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.services-description {
+  font-size: 18px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+}
+
+@media (max-width: 960px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Cards */
+.service-card {
+  position: relative;
+  padding: 36px 30px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(18px);
+  overflow: hidden;
+  transition: all 0.35s ease;
+}
+
+.service-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: #ffffff;
+}
+
+.service-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Glow pulse */
+.service-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(600px 200px at top left, rgba(140,170,255,0.18), transparent 45%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.service-card:hover .service-glow {
+  opacity: 1;
+}
+
+.service-card:hover {
+  border-color: rgba(140, 170, 255, 0.45);
+  box-shadow:
+    0 0 0 1px rgba(140,170,255,0.28),
+    0 30px 60px rgba(0, 0, 0, 0.65);
+}
+.service-card:hover h3 {
+  color: #9ddcff;
+}
+.service-card:hover p {
+  color: rgba(255, 255, 255, 0.85);
+}

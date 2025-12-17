@@ -1,0 +1,40 @@
+:root {
+  /* Core colors */
+  --bg-dark: #0b0f14;
+  --bg-deep: #05070a;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-muted: rgba(255, 255, 255, 0.55);
+
+  /* Brand accent (A'Dash glow) */
+  --accent: #6cf2ff;
+  --accent-soft: rgba(108, 242, 255, 0.15);
+
+  /* Gradients */
+  --hero-gradient:
+    radial-gradient(
+      1200px 600px at 15% 30%,
+      rgba(108, 242, 255, 0.12),
+      transparent 60%
+    ),
+    radial-gradient(
+      800px 500px at 80% 20%,
+      rgba(120, 90, 255, 0.12),
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      #0b0f14 0%,
+      #05070a 100%
+    );
+
+  /* Typography */
+  --font-size-hero: clamp(2.8rem, 5vw, 4.5rem);
+  --font-size-sub: clamp(1.1rem, 1.4vw, 1.25rem);
+
+  /* Spacing */
+  --section-padding: 8rem;
+
+  /* Effects */
+  --blur-strong: blur(60px);
+}
