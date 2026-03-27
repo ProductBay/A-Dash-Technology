@@ -1,0 +1,207 @@
+.hero-shell {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 7rem 1.5rem 5rem;
+  background:
+    radial-gradient(1100px 520px at 16% 8%, rgba(83, 216, 255, 0.14), transparent 58%),
+    radial-gradient(960px 520px at 88% 24%, rgba(92, 121, 255, 0.14), transparent 62%),
+    linear-gradient(180deg, #04070c, #060912 62%, #04060b);
+}
+
+.hero-canvas-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.92;
+}
+
+.hero-canvas-wrap canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.hero-aurora,
+.hero-grid,
+.hero-scanline {
+  position: absolute;
+  pointer-events: none;
+}
+
+.hero-aurora {
+  width: 42rem;
+  height: 42rem;
+  border-radius: 50%;
+  filter: blur(72px);
+  opacity: 0.42;
+  z-index: 0;
+}
+
+.hero-aurora-left {
+  top: -10rem;
+  left: -10rem;
+  background: radial-gradient(circle, rgba(82, 224, 255, 0.4), transparent 62%);
+}
+
+.hero-aurora-right {
+  right: -8rem;
+  bottom: -10rem;
+  background: radial-gradient(circle, rgba(102, 122, 255, 0.36), transparent 62%);
+}
+
+.hero-grid {
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(157, 220, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(157, 220, 255, 0.035) 1px, transparent 1px);
+  background-size: 70px 70px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent 90%);
+  z-index: 0;
+}
+
+.hero-scanline {
+  inset: auto 0 24%;
+  height: 240px;
+  background: linear-gradient(180deg, rgba(157, 220, 255, 0.1), transparent);
+  filter: blur(30px);
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1120px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  margin-bottom: 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(157, 220, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(221, 242, 255, 0.82);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-title-modern {
+  margin: 0;
+  max-width: 940px;
+  font-size: clamp(3rem, 6vw, 5.15rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+  text-wrap: balance;
+}
+
+.hero-copy {
+  margin: 26px 0 0;
+  max-width: 760px;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 1.08rem;
+  line-height: 1.8;
+}
+
+.hero-actions-modern {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.hero-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0 20px;
+  border-radius: 14px;
+  text-decoration: none;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.hero-button:hover {
+  transform: translateY(-2px);
+}
+
+.hero-button-primary {
+  background: #ffffff;
+  color: #000000;
+  font-weight: 700;
+}
+
+.hero-button-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
+}
+
+.hero-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 42px;
+}
+
+.hero-metric {
+  padding: 20px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px);
+}
+
+.hero-metric strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+}
+
+.hero-metric span {
+  color: rgba(255, 255, 255, 0.66);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 900px) {
+  .hero-metrics {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero-shell {
+    padding-top: 6.5rem;
+    min-height: auto;
+  }
+
+  .hero-copy {
+    font-size: 1rem;
+  }
+
+  .hero-kicker {
+    line-height: 1.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-button {
+    transition: none;
+  }
+
+  .hero-canvas-wrap {
+    opacity: 0.45;
+  }
+}

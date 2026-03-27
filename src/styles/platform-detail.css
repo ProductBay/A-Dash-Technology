@@ -1,0 +1,149 @@
+.platform-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(900px 340px at 20% 0%, rgba(120, 200, 255, 0.12), transparent 60%),
+    linear-gradient(to bottom, #04070c, #05060a);
+  color: #ffffff;
+}
+
+.platform-hero {
+  padding: 150px 24px 80px;
+}
+
+.platform-hero-inner,
+.platform-section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.platform-back {
+  display: inline-flex;
+  margin-bottom: 28px;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+}
+
+.platform-hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.platform-eyebrow,
+.platform-panel-label {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8fa6ff;
+}
+
+.platform-copy h1 {
+  margin: 0 0 18px;
+  font-size: clamp(44px, 6vw, 68px);
+  line-height: 1.02;
+}
+
+.platform-copy p,
+.platform-panel p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.platform-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.platform-meta div,
+.platform-logo-card,
+.platform-panel {
+  padding: 22px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+}
+
+.platform-meta span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.54);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.platform-meta strong {
+  font-size: 18px;
+}
+
+.platform-logo-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+}
+
+.platform-logo-card img {
+  max-width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+}
+
+.platform-section {
+  padding: 0 24px 40px;
+}
+
+.platform-section-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.platform-panel h2 {
+  margin: 0 0 14px;
+  font-size: 28px;
+}
+
+.platform-capabilities {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.platform-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.platform-tags span {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.platform-missing {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 160px 24px;
+}
+
+@media (max-width: 900px) {
+  .platform-hero-grid,
+  .platform-section-grid,
+  .platform-meta {
+    grid-template-columns: 1fr;
+  }
+}

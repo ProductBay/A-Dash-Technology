@@ -1,0 +1,58 @@
+.contact-cta {
+  padding: 180px 24px;
+  background:
+    radial-gradient(900px 360px at 50% -120px, rgba(120,200,255,0.2), transparent 60%),
+    linear-gradient(to bottom, #05060a, #040508);
+  text-align: center;
+}
+
+.contact-cta-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.contact-cta h2 {
+  font-size: clamp(44px, 6vw, 64px);
+  font-weight: 700;
+  margin-bottom: 22px;
+}
+
+.contact-cta h2 span {
+  background: linear-gradient(90deg, #9ddcff, #7a9bff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.contact-cta p {
+  font-size: 18px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 50px;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-primary {
+  padding: 16px 26px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #7aa2ff, #9ddcff);
+  color: #000;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cta-secondary {
+  padding: 16px 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  text-decoration: none;
+}
+.cta-secondary:hover {
+  background: rgba(255,255,255,0.05);
+}
