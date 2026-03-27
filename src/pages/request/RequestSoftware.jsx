@@ -2,12 +2,12 @@ import { useMemo, useState } from "react";
 import "../../styles/request-website.css";
 import { supabase } from "../../lib/supabase";
 
-import Step1Client from "../../components/requestSoftware/Step1Client";
-import Step2SoftwareType from "../../components/requestSoftware/Step2SoftwareType";
-import Step3Requirements from "../../components/requestSoftware/Step3Requirements";
-import Step4TechData from "../../components/requestSoftware/Step4TechData";
-import Step5TimelineBudget from "../../components/requestSoftware/Step5TimelineBudget";
-import Step6Review from "../../components/requestSoftware/Step6Review";
+import Step1Client from "../../components/requestsoftware/Step1Client";
+import Step2SoftwareType from "../../components/requestsoftware/Step2SoftwareType";
+import Step3Requirements from "../../components/requestsoftware/Step3Requirements";
+import Step4TechData from "../../components/requestsoftware/Step4TechData";
+import Step5TimelineBudget from "../../components/requestsoftware/Step5TimelineBudget";
+import Step6Review from "../../components/requestsoftware/Step6Review";
 
 const TOTAL_STEPS = 6;
 
