@@ -4,6 +4,7 @@ import { AnimatePresence } from "framer-motion";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 import ScrollToTop from "./components/ScrollToTop";
 import PageTransition from "./components/PageTransition";
 
@@ -64,6 +65,7 @@ export default function App() {
 
   return (
     <>
+      <GoogleAnalytics />
       <ScrollToTop />
       {!isAdminRoute ? <Header /> : null}
 
