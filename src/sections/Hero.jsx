@@ -5,18 +5,21 @@ import "../styles/hero.css";
 
 const HeroScene3D = lazy(() => import("./HeroScene3D"));
 
-function shouldEnableHero3D() {
-  if (typeof window === "undefined") return false;
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
-  if (window.innerWidth < 900) return false;
-  return true;
+function getHero3DMode() {
+  if (typeof window === "undefined") return "off";
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return "off";
+  if (window.innerWidth < 720) return "mobile";
+  return "desktop";
 }
 
 export default function Hero() {
   const [loadScene, setLoadScene] = useState(false);
+  const [sceneMode, setSceneMode] = useState("off");
 
   useEffect(() => {
-    if (!shouldEnableHero3D()) return;
+    const nextMode = getHero3DMode();
+    setSceneMode(nextMode);
+    if (nextMode === "off") return;
 
     const start = () => setLoadScene(true);
 
@@ -31,9 +34,9 @@ export default function Hero() {
 
   return (
     <section className="hero-shell">
-      {loadScene ? (
+      {loadScene && sceneMode !== "off" ? (
         <Suspense fallback={null}>
-          <HeroScene3D />
+          <HeroScene3D mode={sceneMode} />
         </Suspense>
       ) : null}
 
