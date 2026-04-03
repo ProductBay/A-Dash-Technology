@@ -1,3 +1,5 @@
+import FormGuideLabel from "../FormGuideLabel";
+
 export default function Step6Review({ data, update }) {
   const lines = [
     ["Name", data.fullName],
@@ -31,7 +33,15 @@ export default function Step6Review({ data, update }) {
 
       <div className="rw-grid">
         <div className="rw-field">
-          <label>How did you hear about A’Dash?</label>
+          <FormGuideLabel
+            text="How did you hear about A'Dash?"
+            title="Referral Source"
+            description="This helps us understand which channels are most useful for future clients."
+            tips={[
+              "You can keep this short.",
+              "Examples: Instagram, referral, Google, LinkedIn.",
+            ]}
+          />
           <input
             value={data.referralSource}
             onChange={(e) => update({ referralSource: e.target.value })}
@@ -40,7 +50,15 @@ export default function Step6Review({ data, update }) {
         </div>
 
         <div className="rw-field">
-          <label>Additional notes</label>
+          <FormGuideLabel
+            text="Additional notes"
+            title="Additional Notes"
+            description="Share anything else that can improve scoping accuracy before kickoff."
+            tips={[
+              "Mention deadlines, stakeholders, or constraints.",
+              "Add context that did not fit earlier steps.",
+            ]}
+          />
           <input
             value={data.notes}
             onChange={(e) => update({ notes: e.target.value })}

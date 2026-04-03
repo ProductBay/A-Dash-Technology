@@ -15,13 +15,20 @@ const Pricing = lazy(() => import("./pages/Pricing"));
 const Contact = lazy(() => import("./pages/Contact"));
 const About = lazy(() => import("./pages/About"));
 const Work = lazy(() => import("./pages/Work"));
+const Projects = lazy(() => import("./pages/Projects"));
 const Graphics = lazy(() => import("./pages/Graphics"));
 const Websites = lazy(() => import("./pages/Websites"));
 const AdminSubmissions = lazy(() => import("./pages/AdminSubmissions"));
+const WebsiteProjectSummary = lazy(() => import("./pages/projects/WebsiteProjectSummary"));
+const GraphicsProjectSummary = lazy(() => import("./pages/projects/GraphicsProjectSummary"));
 const RequestSelector = lazy(() => import("./pages/request/RequestSelector"));
 const RequestDiscovery = lazy(() => import("./pages/request/RequestDiscovery"));
 const RequestSoftware = lazy(() => import("./pages/request/RequestSoftware"));
 const RequestWebsite = lazy(() => import("./pages/RequestWebsite"));
+const ClientPortal = lazy(() => import("./pages/ClientPortal"));
+const DiscoveryService = lazy(() => import("./pages/services/DiscoveryService"));
+const SoftwareService = lazy(() => import("./pages/services/SoftwareService"));
+const WebsiteService = lazy(() => import("./pages/services/WebsiteService"));
 
 function RouteLoader() {
   return (
@@ -62,12 +69,14 @@ function routeElement(node) {
 export default function App() {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith("/admin");
+  const isClientRoute = location.pathname.startsWith("/client");
+  const hideMarketingChrome = isAdminRoute || isClientRoute;
 
   return (
     <>
       <GoogleAnalytics />
       <ScrollToTop />
-      {!isAdminRoute ? <Header /> : null}
+      {!hideMarketingChrome ? <Header /> : null}
 
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
@@ -78,6 +87,15 @@ export default function App() {
           <Route path="/graphics" element={routeElement(<Graphics />)} />
           <Route path="/websites" element={routeElement(<Websites />)} />
           <Route path="/work" element={routeElement(<Work />)} />
+          <Route path="/projects" element={routeElement(<Projects />)} />
+          <Route
+            path="/projects/website/:slug"
+            element={routeElement(<WebsiteProjectSummary />)}
+          />
+          <Route
+            path="/projects/graphics/:slug"
+            element={routeElement(<GraphicsProjectSummary />)}
+          />
           <Route path="/admin" element={routeElement(<AdminSubmissions />)} />
           <Route path="/contact" element={routeElement(<Contact />)} />
           <Route path="/about" element={routeElement(<About />)} />
@@ -92,6 +110,11 @@ export default function App() {
             element={routeElement(<RequestSoftware />)}
           />
           <Route path="/request/website" element={routeElement(<RequestWebsite />)} />
+          <Route path="/client" element={routeElement(<ClientPortal />)} />
+
+          <Route path="/services/discovery" element={routeElement(<DiscoveryService />)} />
+          <Route path="/services/software" element={routeElement(<SoftwareService />)} />
+          <Route path="/services/websites" element={routeElement(<WebsiteService />)} />
 
           <Route
             path="/request/ai"
@@ -108,7 +131,7 @@ export default function App() {
         </Routes>
       </AnimatePresence>
 
-      {!isAdminRoute ? <Footer /> : null}
+      {!hideMarketingChrome ? <Footer /> : null}
     </>
   );
 }

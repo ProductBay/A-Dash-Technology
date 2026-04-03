@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import "../styles/request-website.css";
 import { supabase } from "../lib/supabase";
+import { insertServiceRequest } from "../lib/serviceRequests";
 
 import Step1Client from "../components/requestWebsite/Step1Client";
 import Step2Project from "../components/requestWebsite/Step2Project";
@@ -28,7 +29,7 @@ const initialData = {
   stylePreference: "Futuristic / Tech",
   referenceLinks: "",
   timeline: "2-4 weeks",
-  budget: "$1,000 - $3,000",
+  budget: "J$180,000 - J$350,000",
   phased: "Yes",
   referralSource: "",
   notes: "",
@@ -94,13 +95,18 @@ export default function RequestWebsite() {
 
     setSubmitting(true);
 
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
     const payload = {
       ...data,
       websiteUrl: normalizeUrl(data.websiteUrl),
     };
 
     try {
-      const { error } = await supabase.from("service_requests").insert([
+      const { error } = await insertServiceRequest(
+        supabase,
         {
           service_type: "website",
           full_name: data.fullName,
@@ -111,7 +117,8 @@ export default function RequestWebsite() {
           client_type: data.clientType,
           payload,
         },
-      ]);
+        session?.user?.id
+      );
 
       if (error) {
         console.error("Supabase insert error:", error);

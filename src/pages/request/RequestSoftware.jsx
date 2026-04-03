@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import "../../styles/request-website.css";
 import { supabase } from "../../lib/supabase";
+import { insertServiceRequest } from "../../lib/serviceRequests";
 
 import Step1Client from "../../components/requestsoftware/Step1Client";
 import Step2SoftwareType from "../../components/requestsoftware/Step2SoftwareType";
@@ -35,7 +36,7 @@ const initialData = {
   securityNeeds: [],
   preferredStack: "",
   timeline: "1-2 months",
-  budget: "$3,000 - $6,000",
+  budget: "J$1,200,000 - J$2,500,000",
   phased: "Yes",
   maintenance: "Yes",
   referralSource: "",
@@ -98,8 +99,13 @@ export default function RequestSoftware() {
 
     setSubmitting(true);
 
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
     try {
-      const { error } = await supabase.from("service_requests").insert([
+      const { error } = await insertServiceRequest(
+        supabase,
         {
           service_type: "software",
           full_name: data.fullName,
@@ -110,7 +116,8 @@ export default function RequestSoftware() {
           client_type: data.clientType,
           payload: data,
         },
-      ]);
+        session?.user?.id
+      );
 
       if (error) {
         console.error("Supabase insert error:", error);

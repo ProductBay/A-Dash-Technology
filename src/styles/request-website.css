@@ -191,6 +191,12 @@
   margin-bottom:8px;
 }
 
+.rw-label-with-help{
+  display:flex !important;
+  align-items:center;
+  gap:2px;
+}
+
 .rw-field input, .rw-field select, .rw-field textarea{
   width:100%;
   padding: 12px 12px;
@@ -237,6 +243,37 @@
   border-color: rgba(0,255,255,0.40);
   background: linear-gradient(90deg, rgba(0,255,255,0.16), rgba(0,255,128,0.12));
   box-shadow: 0 0 28px rgba(0,255,255,0.12);
+}
+
+.rw-typecard{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding: 6px 8px 6px 12px;
+  border-radius:999px;
+  border:1px solid rgba(232,240,255,0.14);
+  background: rgba(255,255,255,0.05);
+  transition: transform .15s ease, border-color .2s ease, background .2s ease;
+}
+
+.rw-typecard:hover{
+  transform: translateY(-1px);
+  border-color: rgba(0,255,255,0.24);
+}
+
+.rw-typecard.active{
+  border-color: rgba(0,255,255,0.40);
+  background: linear-gradient(90deg, rgba(0,255,255,0.16), rgba(0,255,128,0.12));
+  box-shadow: 0 0 28px rgba(0,255,255,0.12);
+}
+
+.rw-typecard-main{
+  padding:6px 2px;
+  border:none;
+  background:transparent;
+  color: rgba(232,240,255,0.9);
+  font-weight:700;
+  cursor:pointer;
 }
 
 .rw-review{

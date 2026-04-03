@@ -1,3 +1,5 @@
+import FormGuideLabel from "../FormGuideLabel";
+
 const integrations = [
   "Stripe / Payments",
   "Twilio / SMS",
@@ -28,7 +30,15 @@ export default function Step4TechData({ data, update }) {
     <div className="rw-stack">
       <div className="rw-grid">
         <div className="rw-field">
-          <label>Do you already have designs?</label>
+          <FormGuideLabel
+            text="Do you already have designs?"
+            title="Design Readiness"
+            description="Knowing if designs are available helps us estimate UI/UX effort and timeline."
+            tips={[
+              "Choose Yes if you have usable Figma or design files.",
+              "Choose No if design is part of the project scope.",
+            ]}
+          />
           <select value={data.hasDesign} onChange={(e) => update({ hasDesign: e.target.value })}>
             <option>No</option>
             <option>Yes</option>
@@ -36,7 +46,15 @@ export default function Step4TechData({ data, update }) {
         </div>
 
         <div className="rw-field">
-          <label>Do you already have an API/backend?</label>
+          <FormGuideLabel
+            text="Do you already have an API/backend?"
+            title="Backend Availability"
+            description="This determines whether we integrate with existing services or build backend systems from scratch."
+            tips={[
+              "Choose Yes if endpoints already exist and are documented.",
+              "Choose No if backend still needs architecture and development.",
+            ]}
+          />
           <select value={data.hasApi} onChange={(e) => update({ hasApi: e.target.value })}>
             <option>No</option>
             <option>Yes</option>
@@ -45,7 +63,15 @@ export default function Step4TechData({ data, update }) {
       </div>
 
       <div className="rw-field">
-        <label>Integrations (select any)</label>
+        <FormGuideLabel
+          text="Integrations (select any)"
+          title="Third-party Integrations"
+          description="Select external services your software must connect with at launch."
+          tips={[
+            "Choose all known integrations now.",
+            "Use Custom API for private or internal services.",
+          ]}
+        />
         <div className="rw-chipgrid">
           {integrations.map((i) => (
             <button
@@ -61,7 +87,15 @@ export default function Step4TechData({ data, update }) {
       </div>
 
       <div className="rw-field">
-        <label>Security requirements (select any)</label>
+        <FormGuideLabel
+          text="Security requirements (select any)"
+          title="Security Requirements"
+          description="Security controls shape architecture and compliance planning from day one."
+          tips={[
+            "Select controls needed by policy or regulation.",
+            "Add extra security details in notes fields if needed.",
+          ]}
+        />
         <div className="rw-chipgrid">
           {securityNeeds.map((s) => (
             <button
@@ -78,7 +112,15 @@ export default function Step4TechData({ data, update }) {
 
       <div className="rw-grid">
         <div className="rw-field">
-          <label>Data sources / existing systems</label>
+          <FormGuideLabel
+            text="Data sources / existing systems"
+            title="Data Sources"
+            description="Describe where existing data lives so migration and syncing can be scoped correctly."
+            tips={[
+              "List current tools, databases, and spreadsheets.",
+              "Mention data quality or formatting concerns if known.",
+            ]}
+          />
           <textarea
             rows={4}
             value={data.dataSources}
@@ -88,7 +130,15 @@ export default function Step4TechData({ data, update }) {
         </div>
 
         <div className="rw-field">
-          <label>Preferred tech stack (optional)</label>
+          <FormGuideLabel
+            text="Preferred tech stack (optional)"
+            title="Preferred Tech Stack"
+            description="Share stack preferences, internal standards, or platform constraints for architecture planning."
+            tips={[
+              "Optional if you want us to recommend the stack.",
+              "Mention hosting or language constraints if they exist.",
+            ]}
+          />
           <textarea
             rows={4}
             value={data.preferredStack}

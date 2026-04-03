@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { supabase } from "../../lib/supabase";
+import FormGuideLabel from "../../components/FormGuideLabel";
+import { insertServiceRequest } from "../../lib/serviceRequests";
 import "../../styles/request-website.css";
 
 const initialData = {
@@ -36,8 +38,13 @@ export default function RequestDiscovery() {
 
     setSubmitting(true);
 
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
     try {
-      const { error } = await supabase.from("service_requests").insert([
+      const { error } = await insertServiceRequest(
+        supabase,
         {
           service_type: "discovery",
           full_name: data.fullName,
@@ -48,7 +55,8 @@ export default function RequestDiscovery() {
           client_type: data.projectStage,
           payload: data,
         },
-      ]);
+        session?.user?.id
+      );
 
       if (error) throw error;
       setSubmitted(true);
@@ -93,45 +101,70 @@ export default function RequestDiscovery() {
 
         <form className="rw-body rw-stack" onSubmit={handleSubmit}>
           <div className="rw-grid">
-            <label className="rw-field">
-              <span>Full name</span>
+            <div className="rw-field">
+              <FormGuideLabel
+                text="Full name"
+                title="Full Name"
+                description="Enter the name of the main person we should coordinate with."
+                tips={["Use the decision-maker or project lead.", "Make sure spelling is accurate."]}
+              />
               <input
                 value={data.fullName}
                 onChange={(e) => update("fullName", e.target.value)}
               />
-            </label>
+            </div>
 
-            <label className="rw-field">
-              <span>Company</span>
+            <div className="rw-field">
+              <FormGuideLabel
+                text="Company"
+                title="Company"
+                description="Share your company or brand name if applicable."
+                tips={["Optional for personal projects.", "Use your public-facing brand name."]}
+              />
               <input
                 value={data.company}
                 onChange={(e) => update("company", e.target.value)}
               />
-            </label>
+            </div>
           </div>
 
           <div className="rw-grid">
-            <label className="rw-field">
-              <span>Email</span>
+            <div className="rw-field">
+              <FormGuideLabel
+                text="Email"
+                title="Email"
+                description="Provide the best inbox for updates and follow-up questions."
+                tips={["Use an email checked daily.", "Team inbox is fine if shared."]}
+              />
               <input
                 type="email"
                 value={data.email}
                 onChange={(e) => update("email", e.target.value)}
               />
-            </label>
+            </div>
 
-            <label className="rw-field">
-              <span>WhatsApp / phone</span>
+            <div className="rw-field">
+              <FormGuideLabel
+                text="WhatsApp / phone"
+                title="WhatsApp or Phone"
+                description="Share your quickest contact method for clarifications."
+                tips={["Include country code.", "WhatsApp number is preferred."]}
+              />
               <input
                 value={data.whatsapp}
                 onChange={(e) => update("whatsapp", e.target.value)}
               />
-            </label>
+            </div>
           </div>
 
           <div className="rw-grid">
-            <label className="rw-field">
-              <span>Project stage</span>
+            <div className="rw-field">
+              <FormGuideLabel
+                text="Project stage"
+                title="Project Stage"
+                description="Tell us how mature your project is so we can recommend the right starting approach."
+                tips={["Choose the closest current state.", "If in-between, select the earlier stage."]}
+              />
               <select
                 value={data.projectStage}
                 onChange={(e) => update("projectStage", e.target.value)}
@@ -141,10 +174,15 @@ export default function RequestDiscovery() {
                 <option>Ready to start build</option>
                 <option>Existing system needs upgrade</option>
               </select>
-            </label>
+            </div>
 
-            <label className="rw-field">
-              <span>Preferred track</span>
+            <div className="rw-field">
+              <FormGuideLabel
+                text="Preferred track"
+                title="Preferred Track"
+                description="Pick the direction you think fits best, or choose help deciding if you want guidance first."
+                tips={["This is not permanent and can be adjusted later.", "Choose help deciding if uncertain."]}
+              />
               <select
                 value={data.preferredTrack}
                 onChange={(e) => update("preferredTrack", e.target.value)}
@@ -155,25 +193,35 @@ export default function RequestDiscovery() {
                 <option>AI / automation</option>
                 <option>3D / visualization</option>
               </select>
-            </label>
+            </div>
           </div>
 
           <div className="rw-grid">
-            <label className="rw-field">
-              <span>Budget range</span>
+            <div className="rw-field">
+              <FormGuideLabel
+                text="Budget range"
+                title="Budget Range"
+                description="Budget helps us shape scope and phase planning realistically."
+                tips={["Pick your comfortable investment range.", "You can refine this during discovery calls."]}
+              />
               <select
                 value={data.budgetRange}
                 onChange={(e) => update("budgetRange", e.target.value)}
               >
                 <option>Not sure yet</option>
-                <option>Under $3,000</option>
-                <option>$3,000 - $10,000</option>
-                <option>$10,000+</option>
+                <option>Under J$350,000</option>
+                <option>J$350,000 - J$1,500,000</option>
+                <option>J$1,500,000+</option>
               </select>
-            </label>
+            </div>
 
-            <label className="rw-field">
-              <span>Timeline</span>
+            <div className="rw-field">
+              <FormGuideLabel
+                text="Timeline"
+                title="Timeline"
+                description="Target timeline helps prioritize urgency and delivery sequencing."
+                tips={["Choose ASAP only for urgent launch targets.", "Flexible gives better planning options."]}
+              />
               <select
                 value={data.timeline}
                 onChange={(e) => update("timeline", e.target.value)}
@@ -184,18 +232,26 @@ export default function RequestDiscovery() {
                 <option>1-3 months</option>
                 <option>3+ months</option>
               </select>
-            </label>
+            </div>
           </div>
 
-          <label className="rw-field">
-            <span>Project summary</span>
+          <div className="rw-field">
+            <FormGuideLabel
+              text="Project summary"
+              title="Project Summary"
+              description="Describe your challenge and desired outcome in plain language so we can guide the right next step."
+              tips={[
+                "Explain current problem, desired result, and who benefits.",
+                "Include any constraints, deadlines, or must-have outcomes.",
+              ]}
+            />
             <textarea
               rows={6}
               value={data.summary}
               onChange={(e) => update("summary", e.target.value)}
               placeholder="Describe the business problem, what you think you need, and what outcome you want."
             />
-          </label>
+          </div>
 
           <footer className="rw-footer">
             <div className="rw-footer-right">

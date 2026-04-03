@@ -55,6 +55,10 @@ function createSupabaseFallback() {
         data: { session: null },
         error,
       }),
+      signUp: async () => ({
+        data: { session: null, user: null },
+        error,
+      }),
       signOut: async () => ({ error: null }),
     },
     from() {

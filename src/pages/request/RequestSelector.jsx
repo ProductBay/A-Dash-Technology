@@ -8,21 +8,24 @@ export default function RequestSelector() {
     {
       label: "Discovery",
       hint: "Scope • qualification • roadmap",
-      path: "/request/discovery",
+      requestPath: "/request/discovery",
+      detailPath: "/services/discovery",
       glow: "#f59e0b",
       orbitStyle: { "--orbit-x": "30%", "--orbit-y": "24%" },
     },
     {
       label: "Software",
       hint: "Systems • APIs • platforms",
-      path: "/request/software",
+      requestPath: "/request/software",
+      detailPath: "/services/software",
       glow: "#00ffff",
       orbitStyle: { "--orbit-x": "72%", "--orbit-y": "24%" },
     },
     {
       label: "Websites",
       hint: "Sites • web apps • portals",
-      path: "/request/website",
+      requestPath: "/request/website",
+      detailPath: "/services/websites",
       glow: "#00ff80",
       orbitStyle: { "--orbit-x": "50%", "--orbit-y": "78%" },
     },
@@ -53,10 +56,10 @@ export default function RequestSelector() {
         <div className="rs-service-grid">
           {services.map((item) => (
             <button
-              key={item.path}
+              key={item.requestPath}
               type="button"
               className="rs-service-card"
-              onClick={() => navigate(item.path)}
+              onClick={() => navigate(item.requestPath)}
             >
               <span
                 className="rs-service-glow"
@@ -86,14 +89,14 @@ export default function RequestSelector() {
 
           {services.map((item) => (
             <button
-              key={item.path}
+              key={item.detailPath}
               type="button"
               className="rs-orbit-node"
               style={{
                 ...item.orbitStyle,
                 "--node-glow": item.glow,
               }}
-              onClick={() => navigate(item.path)}
+              onClick={() => navigate(item.detailPath)}
             >
               <strong>{item.label}</strong>
               <span>{item.hint}</span>
@@ -109,6 +112,60 @@ export default function RequestSelector() {
         </button>
         .
       </div>
+
+      <nav className="rs-mobile-actionbar" aria-label="Quick request actions">
+        <button
+          type="button"
+          className="rs-mobile-action"
+          onClick={() => navigate("/request/discovery")}
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" aria-hidden="true">
+            <path d="M12 3l7 4v10l-7 4-7-4V7l7-4z" />
+            <path d="M12 8v8" />
+            <path d="M8.5 10l3.5-2 3.5 2" />
+          </svg>
+          <span>Discovery</span>
+        </button>
+
+        <button
+          type="button"
+          className="rs-mobile-action"
+          onClick={() => navigate("/request/software")}
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" aria-hidden="true">
+            <rect x="4" y="5" width="16" height="14" rx="3" />
+            <path d="M8 9h8" />
+            <path d="M8 13h4" />
+            <circle cx="16.5" cy="13.5" r="1.5" />
+          </svg>
+          <span>Software</span>
+        </button>
+
+        <button
+          type="button"
+          className="rs-mobile-action"
+          onClick={() => navigate("/request/website")}
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="16" rx="3" />
+            <path d="M3 9h18" />
+            <path d="M8 4v5" />
+          </svg>
+          <span>Websites</span>
+        </button>
+
+        <button
+          type="button"
+          className="rs-mobile-action"
+          onClick={() => navigate("/contact")}
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" aria-hidden="true">
+            <path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h11A2.5 2.5 0 0 1 20 7.5v9A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5v-9z" />
+            <path d="M5 8l7 5 7-5" />
+          </svg>
+          <span>Contact</span>
+        </button>
+      </nav>
     </main>
   );
 }

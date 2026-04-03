@@ -1,3 +1,5 @@
+import FormGuideLabel from "../FormGuideLabel";
+
 const assets = ["Logo", "Brand colors", "Fonts", "None yet"];
 const styles = ["Clean / Minimal", "Corporate / Professional", "Futuristic / Tech", "Creative / Bold"];
 
@@ -11,7 +13,15 @@ export default function Step4Design({ data, update }) {
   return (
     <div className="rw-stack">
       <div className="rw-field">
-        <label>Brand assets available</label>
+        <FormGuideLabel
+          text="Brand assets available"
+          title="Brand Assets"
+          description="Tell us what design materials already exist so we can estimate design effort accurately."
+          tips={[
+            "Select all assets currently ready.",
+            "Choose None yet if branding still needs to be created.",
+          ]}
+        />
         <div className="rw-chipgrid">
           {assets.map((a) => (
             <button
@@ -27,7 +37,15 @@ export default function Step4Design({ data, update }) {
       </div>
 
       <div className="rw-field">
-        <label>Design style preference</label>
+        <FormGuideLabel
+          text="Design style preference"
+          title="Design Style"
+          description="Choose the visual direction that best matches your brand and audience expectations."
+          tips={[
+            "Pick one primary style.",
+            "Use reference links below to fine-tune taste.",
+          ]}
+        />
         <div className="rw-chipgrid">
           {styles.map((s) => (
             <button
@@ -43,7 +61,15 @@ export default function Step4Design({ data, update }) {
       </div>
 
       <div className="rw-field">
-        <label>Reference websites (optional)</label>
+        <FormGuideLabel
+          text="Reference websites (optional)"
+          title="Reference Websites"
+          description="Share examples to speed up alignment on layout, visuals, and interaction quality."
+          tips={[
+            "Paste one link per line.",
+            "Mention what you like about each example.",
+          ]}
+        />
         <textarea
           rows={4}
           value={data.referenceLinks}

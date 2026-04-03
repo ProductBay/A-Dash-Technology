@@ -1,3 +1,5 @@
+import FormGuideLabel from "../FormGuideLabel";
+
 const features = [
   "Contact forms",
   "WhatsApp integration",
@@ -22,7 +24,15 @@ export default function Step3Features({ data, update }) {
   return (
     <div className="rw-stack">
       <div className="rw-field">
-        <label>Choose features</label>
+        <FormGuideLabel
+          text="Choose features"
+          title="Feature Selection"
+          description="Select capabilities your website must include at launch."
+          tips={[
+            "Pick only the features needed for version one.",
+            "You can add advanced features in later phases.",
+          ]}
+        />
         <div className="rw-chipgrid">
           {features.map((f) => (
             <button
@@ -38,7 +48,15 @@ export default function Step3Features({ data, update }) {
       </div>
 
       <div className="rw-field">
-        <label>Custom features / notes</label>
+        <FormGuideLabel
+          text="Custom features / notes"
+          title="Custom Feature Notes"
+          description="Add special requirements that are not already listed in the feature cards."
+          tips={[
+            "Describe integrations, automation, or workflows.",
+            "Include business rules if known.",
+          ]}
+        />
         <textarea
           rows={5}
           value={data.customFeatures}

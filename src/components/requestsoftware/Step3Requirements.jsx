@@ -1,3 +1,5 @@
+import FormGuideLabel from "../FormGuideLabel";
+
 const features = [
   "User authentication / login",
   "Role-based access control",
@@ -23,7 +25,15 @@ export default function Step3Requirements({ data, update }) {
   return (
     <div className="rw-stack">
       <div className="rw-field">
-        <label>Core features *</label>
+        <FormGuideLabel
+          text="Core features *"
+          title="Core Features"
+          description="Select the capabilities required for your first production release."
+          tips={[
+            "Choose essentials for launch.",
+            "Use must-have and nice-to-have fields below to prioritize clearly.",
+          ]}
+        />
         <div className="rw-chipgrid">
           {features.map((f) => (
             <button
@@ -39,7 +49,15 @@ export default function Step3Requirements({ data, update }) {
       </div>
 
       <div className="rw-field">
-        <label>User roles (select any)</label>
+        <FormGuideLabel
+          text="User roles (select any)"
+          title="User Roles"
+          description="Roles define permissions, dashboards, and approval paths in your system."
+          tips={[
+            "Select every role expected at launch.",
+            "Add missing role details in workflow notes.",
+          ]}
+        />
         <div className="rw-chipgrid">
           {roles.map((r) => (
             <button
@@ -55,7 +73,15 @@ export default function Step3Requirements({ data, update }) {
       </div>
 
       <div className="rw-field">
-        <label>Workflow / business logic</label>
+        <FormGuideLabel
+          text="Workflow / business logic"
+          title="Workflow and Business Logic"
+          description="Explain what users do step-by-step and how approvals, status changes, or automations should work."
+          tips={[
+            "Describe process from first action to completion.",
+            "Include exceptions and approval rules if possible.",
+          ]}
+        />
         <textarea
           rows={5}
           value={data.workflows}
@@ -66,7 +92,15 @@ export default function Step3Requirements({ data, update }) {
 
       <div className="rw-grid">
         <div className="rw-field">
-          <label>Must-have features</label>
+          <FormGuideLabel
+            text="Must-have features"
+            title="Must-have Features"
+            description="List features that are required before go-live."
+            tips={[
+              "Focus on mission-critical requirements.",
+              "Anything here should be non-negotiable for launch.",
+            ]}
+          />
           <textarea
             rows={4}
             value={data.mustHave}
@@ -76,7 +110,15 @@ export default function Step3Requirements({ data, update }) {
         </div>
 
         <div className="rw-field">
-          <label>Nice-to-have features</label>
+          <FormGuideLabel
+            text="Nice-to-have features"
+            title="Nice-to-have Features"
+            description="List enhancements that can be delivered after launch or in later phases."
+            tips={[
+              "Great place for future optimizations.",
+              "Keep this separate from core launch requirements.",
+            ]}
+          />
           <textarea
             rows={4}
             value={data.niceToHave}
